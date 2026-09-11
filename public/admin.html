@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | Nawab Marketing</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body { background: var(--navy); }
+  .admin-wrap { max-width: 980px; margin: 0 auto; padding: 50px 24px 80px; }
+  .admin-top { display:flex; justify-content:space-between; align-items:center; margin-bottom: 34px; }
+  .admin-top .brand { color: var(--ivory); }
+  #loginScreen { max-width: 380px; margin: 90px auto; }
+  #loginScreen .form-card { background: var(--white); }
+  #dashboard { display: none; }
+
+  .tabs { display:flex; gap:6px; margin-bottom: 28px; border-bottom:1px solid var(--line-light); }
+  .tab-btn {
+    background:none; border:none; color: rgba(246,242,233,0.65);
+    padding: 12px 20px; font-weight:700; font-size:14.5px; cursor:pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  .admin-card { background: var(--white); border: 1px solid var(--line); padding: 30px; border-radius: var(--radius); margin-bottom: 30px; }
+  .admin-card h3 { margin-bottom: 20px; }
+
+  .row-item { display:flex; gap:16px; align-items:center; border-top:1px solid var(--line); padding: 16px 0; }
+  .row-item:first-child { border-top:none; }
+  .row-thumb { width:70px; height:56px; background:linear-gradient(135deg,var(--navy),#23324e); background-size:cover; background-position:center; flex-shrink:0; }
+  .row-info { flex:1; }
+  .row-info h4 { margin:0 0 4px; font-size:16px; }
+  .row-info span, .row-info p { font-size:13px; color: var(--stone); margin:0; }
+  .row-actions { display:flex; gap:6px; }
+  .row-actions button { border:none; background:none; cursor:pointer; font-size:13.5px; font-weight:700; padding:6px 10px; white-space:nowrap; }
+  .del-btn { color:#b3432c; }
+  .approve-btn { color:#2f7a4d; }
+  .edit-btn { color: var(--gold-dim); }
+
+  .badge { font-size:11px; font-weight:800; padding:2px 8px; margin-left:8px; border-radius:2px; }
+  .badge-featured { background: var(--gold); color: var(--navy); }
+  .badge-pending { background:#f0c869; color:#5a4200; }
+  .badge-approved { background:#bfe3c9; color:#1f5c33; }
+  .badge-rejected { background:#e8c2b8; color:#7a2c17; }
+
+  #loginMsg, .form-msg { margin-top: 12px; font-weight:700; font-size:14px; }
+  .err { color:#b3432c; } .ok { color:#2f7a4d; }
+  .logout-btn { background:none; border:1px solid var(--line-light); color: var(--ivory); padding:10px 20px; cursor:pointer; font-weight:700; font-size:14px; }
+</style>
+</head>
+<body>
+
+<div class="admin-wrap">
+
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen">
+    <div class="form-card">
+      <h3 class="mt-0" style="text-align:center;">Nawab Marketing<br><span style="font-size:14px; color:var(--stone); font-weight:500;">Admin Login</span></h3>
+      <form id="loginForm">
+        <div class="form-row">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Log In</button>
+        <div id="loginMsg"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <div class="admin-top">
+      <a href="index.html" class="brand">Nawab<span>Marketing</span> <span style="font-size:14px; color:var(--gold); font-weight:600;">/ Admin</span></a>
+      <button class="logout-btn" id="logoutBtn">Log Out</button>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="projects">Projects</button>
+      <button class="tab-btn" data-tab="services">Services</button>
+      <button class="tab-btn" data-tab="testimonials">Client Feedback</button>
+      <button class="tab-btn" data-tab="team">Team & Director</button>
+      <button class="tab-btn" data-tab="company">Company Content</button>
+      <button class="tab-btn" data-tab="settings">Contact & Company Info</button>
+    </div>
+
+    <!-- ===================== PROJECTS TAB ===================== -->
+    <div class="tab-panel active" id="tab-projects">
+      <div class="admin-card">
+        <h3 class="mt-0">Add New Project</h3>
+        <form id="addProjectForm">
+          <div class="form-two">
+            <div class="form-row">
+              <label>Project Name</label>
+              <input type="text" name="name" required placeholder="e.g. Nawab Residency">
+            </div>
+            <div class="form-row">
+              <label>Type</label>
+              <select name="type">
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Farmhouse</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Location</label>
+            <input type="text" name="location" required placeholder="e.g. DHA Phase 6, Lahore">
+          </div>
+          <div class="form-two">
+            <div class="form-row">
+              <label>Plot Size / Units</label>
+              <input type="text" name="size" placeholder="e.g. 5 & 10 Marla">
+            </div>
+            <div class="form-row">
+              <label>Status</label>
+              <select name="status">
+                <option>Booking Open</option>
+                <option>Under Construction</option>
+                <option>Possession Ready</option>
+                <option>Sold Out</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Short Description</label>
+            <textarea name="description" rows="3" placeholder="1-2 line description"></textarea>
+          </div>
+          <div class="form-row">
+            <label>Project Photo (JPG/PNG/WEBP, max 5MB)</label>
+            <input type="file" name="photo" accept="image/*">
+          </div>
+          <div class="form-row">
+            <label>Project Video (MP4/WEBM/MOV, max 60MB — optional)</label>
+            <input type="file" name="video" accept="video/*">
+          </div>
+          <div class="form-row" style="display:flex; align-items:center; gap:10px;">
+            <input type="checkbox" name="featured" id="proj_featured" style="width:auto;">
+            <label for="proj_featured" style="margin:0;">Show on Home Page (Featured)</label>
+          </div>
+          <button type="submit" class="btn btn-gold">Add Project</button>
+          <div class="form-msg" id="projectMsg"></div>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h3 class="mt-0">Existing Projects</h3>
+        <div id="projectsList">Loading...</div>
+      </div>
+    </div>
+
+    <!-- ===================== SERVICES TAB ===================== -->
+    <div class="tab-panel" id="tab-services">
+      <div class="admin-card">
+        <h3 class="mt-0">Add New Service</h3>
+        <form id="addServiceForm">
+          <div class="form-row">
+            <label>Service Title</label>
+            <input type="text" name="title" required placeholder="e.g. Legal & Documentation">
+          </div>
+          <div class="form-row">
+            <label>Description</label>
+            <textarea name="description" rows="3" placeholder="What does this service include?"></textarea>
+          </div>
+          <div class="form-row" style="display:flex; align-items:center; gap:10px;">
+            <input type="checkbox" name="featured" id="serv_featured" style="width:auto;">
+            <label for="serv_featured" style="margin:0;">Show on Home Page (Featured)</label>
+          </div>
+          <button type="submit" class="btn btn-gold">Add Service</button>
+          <div class="form-msg" id="serviceMsg"></div>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h3 class="mt-0">Existing Services</h3>
+        <div id="servicesList">Loading...</div>
+      </div>
+    </div>
+
+    <!-- ===================== TESTIMONIALS TAB ===================== -->
+    <div class="tab-panel" id="tab-testimonials">
+      <div class="admin-card">
+        <h3 class="mt-0">Add Feedback Manually</h3>
+        <p style="color:var(--stone); font-size:14px;">Clients can also submit feedback themselves from the Contact page — those will appear below marked "Pending" until you approve them.</p>
+        <form id="addTestimonialForm">
+          <div class="form-two">
+            <div class="form-row">
+              <label>Client Name</label>
+              <input type="text" name="name" required placeholder="e.g. Ahmed Ali">
+            </div>
+            <div class="form-row">
+              <label>Role / City</label>
+              <input type="text" name="role" placeholder="e.g. Homeowner, Lahore">
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Feedback</label>
+            <textarea name="quote" rows="3" required placeholder="What did the client say?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold">Add & Approve</button>
+          <div class="form-msg" id="testimonialMsg"></div>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h3 class="mt-0">All Feedback</h3>
+        <div id="testimonialsList">Loading...</div>
+      </div>
+    </div>
+
+
+    <!-- ===================== TEAM TAB ===================== -->
+    <div class="tab-panel" id="tab-team">
+      <div class="admin-card">
+        <h3 class="mt-0">Add Team Member / Director</h3>
+        <p style="color:var(--stone); font-size:14px;">The first member whose position contains “Director” or “CEO” is displayed larger on the About page. You can add, edit, replace photos, change positions or remove anyone anytime.</p>
+        <form id="addTeamForm">
+          <div class="form-two">
+            <div class="form-row"><label>Name</label><input type="text" name="name" required placeholder="e.g. Nawab Ahmed Khan"></div>
+            <div class="form-row"><label>Position</label><input type="text" name="position" required placeholder="e.g. Managing Director"></div>
+          </div>
+          <div class="form-row"><label>Description</label><textarea name="description" rows="3" placeholder="Short profile"></textarea></div>
+          <div class="form-row"><label>Photo (JPG/PNG/WEBP, max 10MB)</label><input type="file" name="photo" accept="image/jpeg,image/png,image/webp" required></div>
+          <button type="submit" class="btn btn-gold">Add Team Member</button>
+          <div class="form-msg" id="teamMsg"></div>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h3 class="mt-0">Current Team</h3>
+        <div id="teamList">Loading...</div>
+      </div>
+    </div>
+
+    <!-- ===================== COMPANY CONTENT TAB ===================== -->
+    <div class="tab-panel" id="tab-company">
+      <div class="admin-card">
+        <h3 class="mt-0">Company Logo</h3>
+        <p style="color:var(--stone); font-size:14px;">Upload your logo here. It will replace the text brand across the website while keeping the existing website style.</p>
+        <form id="logoForm">
+          <div class="form-row"><label>Logo (PNG/JPG/WEBP)</label><input type="file" name="logo" accept="image/jpeg,image/png,image/webp" required></div>
+          <button type="submit" class="btn btn-gold">Upload / Replace Logo</button>
+          <button type="button" class="btn" id="removeLogoBtn" style="margin-left:8px;">Remove Logo</button>
+          <div class="form-msg" id="logoMsg"></div>
+        </form>
+        <div id="logoPreview" style="margin-top:16px;"></div>
+      </div>
+      <div class="admin-card">
+        <h3 class="mt-0">About Us — Editable Content</h3>
+        <form id="aboutForm">
+          <div class="form-row"><label>Story Heading</label><input type="text" name="aboutStoryTitle"></div>
+          <div class="form-row"><label>Story Paragraph 1</label><textarea name="aboutStory1" rows="4"></textarea></div>
+          <div class="form-row"><label>Story Paragraph 2</label><textarea name="aboutStory2" rows="4"></textarea></div>
+          <div class="form-two">
+            <div class="form-row"><label>Mission Title</label><input type="text" name="missionTitle"></div>
+            <div class="form-row"><label>Mission Text</label><textarea name="missionText" rows="3"></textarea></div>
+          </div>
+          <div class="form-two">
+            <div class="form-row"><label>Vision Title</label><input type="text" name="visionTitle"></div>
+            <div class="form-row"><label>Vision Text</label><textarea name="visionText" rows="3"></textarea></div>
+          </div>
+          <div class="form-row"><label>Why Us Heading</label><input type="text" name="whyTitle"></div>
+          <div class="form-two">
+            <div class="form-row"><label>Point 1 Title</label><input type="text" name="why1Title"></div><div class="form-row"><label>Point 1 Text</label><textarea name="why1Text" rows="3"></textarea></div>
+          </div>
+          <div class="form-two">
+            <div class="form-row"><label>Point 2 Title</label><input type="text" name="why2Title"></div><div class="form-row"><label>Point 2 Text</label><textarea name="why2Text" rows="3"></textarea></div>
+          </div>
+          <div class="form-two">
+            <div class="form-row"><label>Point 3 Title</label><input type="text" name="why3Title"></div><div class="form-row"><label>Point 3 Text</label><textarea name="why3Text" rows="3"></textarea></div>
+          </div>
+          <button type="submit" class="btn btn-gold">Save Company Content</button>
+          <div class="form-msg" id="aboutMsg"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===================== SETTINGS TAB ===================== -->
+    <div class="tab-panel" id="tab-settings">
+      <div class="admin-card">
+        <h3 class="mt-0">Contact & Company Info</h3>
+        <p style="color:var(--stone); font-size:14px;">This updates the phone, email, address and office hours shown on every page of your website — no code editing needed.</p>
+        <form id="settingsForm">
+          <div class="form-two">
+            <div class="form-row">
+              <label>Primary Phone</label>
+              <input type="text" name="phone1" placeholder="e.g. +92 300 0000000">
+            </div>
+            <div class="form-row">
+              <label>Secondary Phone (optional)</label>
+              <input type="text" name="phone2" placeholder="e.g. +92 42 111 222 333">
+            </div>
+            <div class="form-row">
+              <label>WhatsApp Number</label>
+              <input type="text" name="whatsapp" placeholder="e.g. +923000955746">
+              <small style="color:var(--stone);">Use country code, no spaces. This powers the floating WhatsApp button.</small>
+            </div>
+          </div>
+          <div class="form-two">
+            <div class="form-row">
+              <label>Primary Email</label>
+              <input type="email" name="email1" placeholder="e.g. info@nawabmarketing.com">
+            </div>
+            <div class="form-row">
+              <label>Secondary Email (optional)</label>
+              <input type="email" name="email2" placeholder="e.g. sales@nawabmarketing.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Address — Line 1</label>
+            <input type="text" name="addressLine1" placeholder="e.g. Office 4, Main Ghoos e Azam Road">
+          </div>
+          <div class="form-row">
+            <label>Address — Line 2</label>
+            <input type="text" name="addressLine2" placeholder="e.g. Near Grand Royal Marquee, Rawalpindi">
+          </div>
+          <div class="form-two">
+            <div class="form-row">
+              <label>Office Hours — Line 1</label>
+              <input type="text" name="hoursLine1" placeholder="e.g. Monday – Saturday: 10:00 AM – 9:00 PM">
+            </div>
+            <div class="form-row">
+              <label>Office Hours — Line 2</label>
+              <input type="text" name="hoursLine2" placeholder="e.g. Sunday: Closed">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-gold">Save Changes</button>
+          <div class="form-msg" id="settingsMsg"></div>
+        </form>
+      </div>
+
+      <div class="admin-card">
+        <h3 class="mt-0">Homepage Hero & Stats</h3>
+        <p style="color:var(--stone); font-size:14px;">This controls the big heading, paragraph and the 4 numbers shown at the top of your Home page.</p>
+        <form id="heroForm">
+          <div class="form-row">
+            <label>Hero Heading</label>
+            <input type="text" name="heroHeading" placeholder="e.g. Building Trust, One Property at a Time">
+          </div>
+          <div class="form-row">
+            <label>Hero Paragraph</label>
+            <textarea name="heroParagraph" rows="3" placeholder="Short intro shown under the heading"></textarea>
+          </div>
+          <div class="form-two">
+            <div class="form-row">
+              <label>Stat 1 — Number</label>
+              <input type="text" name="statYears" placeholder="e.g. 12+">
+            </div>
+            <div class="form-row">
+              <label>Stat 1 — Label</label>
+              <input type="text" name="statYearsLabel" placeholder="e.g. Years in the Market">
+            </div>
+          </div>
+          <div class="form-two">
+            <div class="form-row">
+              <label>Stat 2 — Number</label>
+              <input type="text" name="statProjects" placeholder="e.g. 40+">
+            </div>
+            <div class="form-row">
+              <label>Stat 2 — Label</label>
+              <input type="text" name="statProjectsLabel" placeholder="e.g. Completed & Ongoing Projects">
+            </div>
+          </div>
+          <div class="form-two">
+            <div class="form-row">
+              <label>Stat 3 — Number</label>
+              <input type="text" name="statClients" placeholder="e.g. 3,500+">
+            </div>
+            <div class="form-row">
+              <label>Stat 3 — Label</label>
+              <input type="text" name="statClientsLabel" placeholder="e.g. Satisfied Clients">
+            </div>
+          </div>
+          <div class="form-two">
+            <div class="form-row">
+              <label>Stat 4 — Number</label>
+              <input type="text" name="statCities" placeholder="e.g. 08">
+            </div>
+            <div class="form-row">
+              <label>Stat 4 — Label</label>
+              <input type="text" name="statCitiesLabel" placeholder="e.g. Cities Covered">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-gold">Save Hero & Stats</button>
+          <div class="form-msg" id="heroMsg"></div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

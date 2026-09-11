@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Nawab Ahmed Khan",
+    "position": "Founder & CEO",
+    "description": "12+ years leading property development and investment advisory in Punjab.",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Bilal Hussain",
+    "position": "Head of Sales",
+    "description": "Oversees client relationships and manages our regional sales teams.",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Ayesha Raza",
+    "position": "Legal & Documentation Lead",
+    "description": "Ensures every property file and title is fully verified before sale.",
+    "image": ""
+  }
+]

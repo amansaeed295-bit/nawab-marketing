@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "Nawab Heights",
+    "type": "Residential",
+    "location": "Bahria Town, Lahore",
+    "description": "Gated residential community with parks, mosque and underground electrification.",
+    "size": "5 & 10 Marla",
+    "status": "Booking Open",
+    "image": "",
+    "featured": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Nawab Trade Center",
+    "type": "Commercial",
+    "location": "Blue Area, Islamabad",
+    "description": "Modern commercial plaza with retail outlets and executive office floors.",
+    "size": "Shops & Offices",
+    "status": "Under Construction",
+    "image": "",
+    "featured": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Nawab Green Valley",
+    "type": "Farmhouse",
+    "location": "Raiwind Road, Lahore",
+    "description": "Farmhouse plots surrounded by greenery, ideal for weekend retreats.",
+    "size": "2, 4 & 8 Kanal",
+    "status": "Booking Open",
+    "image": "",
+    "featured": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Nawab Enclave",
+    "type": "Residential",
+    "location": "DHA Phase 9, Karachi",
+    "description": "Premium residential plots with 24/7 security and community club house.",
+    "size": "250 & 500 Sq Yd",
+    "status": "Possession Ready",
+    "image": "",
+    "featured": false,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "name": "Nawab Business Square",
+    "type": "Commercial",
+    "location": "I-8 Markaz, Islamabad",
+    "description": "Corporate offices and retail spaces in a prime, high-footfall commercial hub.",
+    "size": "Shops & Offices",
+    "status": "Booking Open",
+    "image": "",
+    "featured": false,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "name": "Nawab City",
+    "type": "Residential",
+    "location": "Multan Road, Lahore",
+    "description": "Affordable housing scheme with easy installment plans for salaried families.",
+    "size": "3 & 5 Marla",
+    "status": "Booking Open",
+    "image": "",
+    "featured": false,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 1789142953653,
+    "name": "tfygjhn",
+    "type": "Residential",
+    "location": "jhkgyfdtryjh",
+    "description": "djkgyuafgdasjkzbcs",
+    "size": "23",
+    "status": "Booking Open",
+    "image": "",
+    "video": "",
+    "featured": false,
+    "createdAt": "2026-09-11T16:09:13.653Z"
+  }
+]

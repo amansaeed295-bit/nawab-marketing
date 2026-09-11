@@ -1,0 +1,14 @@
+
+# Firebase Admin service-account keys (NEVER commit/share these)
+*-firebase-adminsdk-*.json
+firebase-service-account.json
+.env
+
+
+node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db

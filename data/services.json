@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "Plot & File Sales",
+    "description": "Verified files and plots in approved housing schemes across major cities, with transparent, negotiable pricing and flexible installment options.",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": 2,
+    "title": "Property Marketing",
+    "description": "Full marketing campaigns for developers — digital advertising, print media, sales events and dedicated on-ground sales teams.",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": 3,
+    "title": "Legal & Documentation",
+    "description": "Title verification, NOC checks, mutation and transfer assistance handled by our in-house legal advisors.",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "id": 4,
+    "title": "Investment Advisory",
+    "description": "One-on-one consultation to match your budget and goals with the right project — residential, commercial or agricultural.",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "id": 5,
+    "title": "Construction Services",
+    "description": "Turnkey construction, renovation and interior fit-out for residential homes and commercial units.",
+    "featured": true,
+    "order": 5
+  },
+  {
+    "id": 6,
+    "title": "Rental Management",
+    "description": "Tenant sourcing, rent agreements, collection and property upkeep for owners who prefer a hands-off approach.",
+    "featured": true,
+    "order": 6
+  },
+  {
+    "id": 7,
+    "title": "Valuation Services",
+    "description": "Accurate, up-to-date property valuation reports for sale, purchase or bank loan purposes.",
+    "featured": false,
+    "order": 7
+  },
+  {
+    "id": 8,
+    "title": "Overseas Pakistani Services",
+    "description": "Dedicated remote support for overseas clients — video site tours, power-of-attorney handling and secure payment guidance.",
+    "featured": false,
+    "order": 8
+  },
+  {
+    "id": 9,
+    "title": "Loan & Financing Guidance",
+    "description": "Assistance connecting you with bank home-financing options and required documentation.",
+    "featured": false,
+    "order": 9
+  }
+]

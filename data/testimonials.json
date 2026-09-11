@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Asad Farooq",
+    "role": "Homeowner, Lahore",
+    "quote": "Nawab Marketing made buying our first plot completely stress-free. Every document was verified before we paid a single rupee.",
+    "status": "approved",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Sana Malik",
+    "role": "Business Owner, Islamabad",
+    "quote": "Professional team, honest advice. They found us a commercial space within our exact budget.",
+    "status": "approved",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Imran Sheikh",
+    "role": "Overseas Investor, UK",
+    "quote": "As an overseas Pakistani, I trusted them to manage everything remotely — they delivered on every promise.",
+    "status": "approved",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  }
+]
