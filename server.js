@@ -544,12 +544,17 @@ app.get('*', (req, res) => {
 
 // ---------- Start server ----------
 (async () => {
-  initFirebase();
+  initFirebase({ projectId: process.env.FIREBASE_PROJECT_ID,
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+});
   await initialiseFirestoreData();
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log("Nawab Marketing server running on port ${PORT}");
-    console.log("Admin panel: http://localhost:${PORT}/admin.html");
+  const port = parseInt(process.env.PORT)||3000;
+
+  app.listen(port, '0.0.0.0', () => {
+    console.log("Nawab Marketing server running on port ${port}");
+    console.log("Admin panel: http://localhost:${port}/admin.html");
     console.log('Data source: Firestore (local JSON kept as fallback/cache).');
   });
 })().catch(err => {
