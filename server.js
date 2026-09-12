@@ -546,9 +546,10 @@ app.get('*', (req, res) => {
 (async () => {
   initFirebase();
   await initialiseFirestoreData();
-  app.listen(PORT, () => {
-    console.log(`Nawab Marketing server running at http://localhost:${PORT}`);
-    console.log(`Admin panel: http://localhost:${PORT}/admin.html`);
+
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log("Nawab Marketing server running on port ${PORT}");
+    console.log("Admin panel: http://localhost:${PORT}/admin.html");
     console.log('Data source: Firestore (local JSON kept as fallback/cache).');
   });
 })().catch(err => {
