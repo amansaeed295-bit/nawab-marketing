@@ -37,15 +37,16 @@ const FILE_NAME_ONLY = {
 // ============================================================
 // 🔐 ADMIN LOGIN CREDENTIALS — CHANGE THESE BEFORE GOING LIVE!
 // ============================================================
-const ADMIN_USERNAME = '@nawabkayani';
-const ADMIN_PASSWORD = 'nawab12579.,@';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || '';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+
 
 // ---------- Middleware ----------
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: 'NAWAB_2020_SECURE..12345678!LLM',
+secret: process.env.SESSION_SECRET || 'change-this-in-env',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 1000 * 60 * 60 * 8 } // 8 hour login session
